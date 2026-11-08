@@ -115,7 +115,7 @@ function messageFor(n){
 function update(){
   const n = document.querySelectorAll("#checks input:checked").length;
   scoreEl.textContent = n;
-  msgEl.textContent = messageFor(n);
+  msgEl.textContent = touched ? messageFor(n) : "Marca lo que ya cumples para ver tu resultado.";
 
   if (CONFIG.bookingUrl){
     book.href = CONFIG.bookingUrl;
@@ -129,7 +129,8 @@ function update(){
   }
 }
 
-list.addEventListener("change", update);
+let touched = false;
+list.addEventListener("change", () => { touched = true; update(); });
 update();
 </script>
 </body>
