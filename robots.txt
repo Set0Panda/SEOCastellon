@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://set0panda.github.io/SEOCastellon/sitemap.xml
