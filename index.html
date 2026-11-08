@@ -3,82 +3,307 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Test de 2 minutos: ¿tu ficha de Google te hace perder clientes?</title>
-<meta name="description" content="Test gratuito de 2 minutos para negocios de Castellón. Descubre qué le falta a tu ficha de Google y reserva una revisión gratuita de 15 minutos.">
+<title>Tu ficha de Google, bien hecha | Negocios de Castellón</title>
+<meta name="description" content="Arreglo la ficha de Google de tu negocio en Castellón en 48 horas: horarios, reseñas, contacto por WhatsApp y reservas. Precio cerrado y sin permanencia. Empieza con un test gratuito de 2 minutos.">
+<meta property="og:title" content="Tu ficha de Google, bien hecha">
+<meta property="og:description" content="Test gratuito de 2 minutos y arreglo en 48 horas para negocios de Castellón.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
 <style>
   :root{
-    --bg:#faf8f4; --card:#ffffff; --ink:#1d2330; --muted:#5b6475;
-    --line:#e3dfd6; --accent:#c2410c; --accent-dark:#9a3412; --ok:#166534;
-    --warn:#a16207; --bad:#b91c1c;
+    --bg:#faf8f4; --paper:#fff; --ink:#1d2330; --muted:#586072; --line:#e3dfd6;
+    --accent:#c2410c; --accent-d:#9a3412; --soft:#fdf0e8; --ok:#166534;
+    --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  main{max-width:640px;margin:0 auto;padding:28px 18px 64px}
-  h1{font-size:1.65rem;line-height:1.2;margin:0 0 8px}
-  .sub{color:var(--muted);margin:0 0 24px}
-  ol{list-style:none;padding:0;margin:0 0 24px;counter-reset:q}
-  li{counter-increment:q}
-  label{display:flex;gap:12px;align-items:flex-start;background:var(--card);
-    border:1px solid var(--line);border-radius:10px;padding:13px 14px;margin-bottom:10px;
-    cursor:pointer}
-  label:hover{border-color:#c9c3b6}
-  label span.t::before{content:counter(q) ". ";color:var(--muted)}
-  input[type=checkbox]{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--accent)}
-  label:has(input:checked){border-color:var(--ok);background:#f2f9f4}
-  .result{background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:20px;margin-bottom:20px}
-  .score{font-size:2.4rem;font-weight:700;line-height:1}
-  .score small{font-size:1rem;font-weight:500;color:var(--muted)}
+  [hidden]{display:none !important}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans)}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  section{padding:56px 0}
+  h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
+  h1{font-size:clamp(2rem,6vw,3.2rem)}
+  h2{font-size:clamp(1.55rem,4vw,2.1rem)}
+  h3{font-size:1.2rem}
+  p{margin:0 0 14px}
+  .muted{color:var(--muted)}
+  .eyebrow{font:600 .8rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font:700 1.05rem var(--serif);text-decoration:none;color:var(--ink)}
+  .brand span{color:var(--accent)}
+
+  /* buttons */
+  .btn{display:inline-block;text-decoration:none;font-weight:600;border-radius:10px;padding:13px 20px;
+    border:1px solid transparent;cursor:pointer;font-size:1rem;font-family:var(--sans)}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-d)}
+  .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{border-color:#bdb7a8}
+  .btn.small{padding:9px 14px;font-size:.92rem}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  [data-cta]{display:none}
+  [data-cta].on{display:inline-block}
+
+  /* hero */
+  .hero{padding:64px 0 48px}
+  .hero p.lead{font-size:1.2rem;max-width:34em;color:var(--muted)}
+  .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;padding:0;list-style:none;font-size:.95rem}
+  .facts li::before{content:"✓ ";color:var(--ok);font-weight:700}
+
+  /* leaks */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{margin-bottom:8px}
+  .card p{margin:0;color:var(--muted);font-size:.98rem}
+
+  /* pricing */
+  .price{font:700 1.9rem var(--serif);margin:4px 0 2px}
+  .price small{font:500 .95rem var(--sans);color:var(--muted)}
+  .card ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:.95rem}
+  .card li{margin-bottom:6px}
+  .card.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .tag{display:inline-block;font:600 .72rem var(--sans);letter-spacing:.08em;text-transform:uppercase;
+    background:var(--soft);color:var(--accent-d);padding:4px 9px;border-radius:99px;margin-bottom:10px}
+  .note{font-size:.92rem;color:var(--muted);margin-top:18px}
+
+  /* steps */
+  .steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+    background:var(--soft);color:var(--accent-d);font:700 1rem var(--serif);margin-bottom:12px}
+  .steps h3{margin-bottom:6px}
+  .steps p{margin:0;color:var(--muted);font-size:.98rem}
+
+  /* test */
+  #test{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .test-box{max-width:640px}
+  ol.checks{list-style:none;padding:0;margin:20px 0;counter-reset:q}
+  ol.checks li{counter-increment:q}
+  .checks label{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;padding:13px 14px;margin-bottom:10px;cursor:pointer}
+  .checks label:hover{border-color:#c9c3b6}
+  .checks .t::before{content:counter(q) ". ";color:var(--muted)}
+  .checks input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--accent)}
+  .checks label:has(input:checked){border-color:var(--ok);background:#f2f9f4}
+  .result{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .score{font:700 2.4rem/1 var(--serif)}
+  .score small{font:500 1rem var(--sans);color:var(--muted)}
   .msg{margin:10px 0 0}
-  .cta h2{font-size:1.25rem;margin:0 0 6px}
-  .cta p{margin:0 0 14px;color:var(--muted)}
-  .btns{display:flex;flex-wrap:wrap;gap:10px}
-  a.btn{display:inline-block;text-decoration:none;font-weight:600;border-radius:10px;
-    padding:13px 18px}
-  a.primary{background:var(--accent);color:#fff}
-  a.primary:hover{background:var(--accent-dark)}
-  a.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-  a.hidden{display:none}
-  .pilot{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:.95rem}
-  .foot{margin-top:28px;font-size:.85rem;color:var(--muted)}
+
+  /* faq */
+  details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+  summary{font-weight:600;cursor:pointer}
+  details p{margin:10px 0 0;color:var(--muted)}
+
+  /* about / contact */
+  .about{max-width:640px}
+  .contact{background:var(--ink);color:#fff;border-radius:18px;padding:36px 28px;text-align:center}
+  .contact h2{color:#fff}
+  .contact p{color:#cfd3dc}
+  .contact .btns{justify-content:center}
+  .contact .btn.ghost{background:transparent;color:#fff;border-color:#59627a}
+  .soon{font-size:.95rem}
+  footer{padding:30px 0 50px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+
   :focus-visible{outline:3px solid #1d4ed8;outline-offset:2px}
+  @media (max-width:760px){
+    .grid3,.steps{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .hero{padding:44px 0 36px}
+  }
 </style>
 </head>
 <body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#">Ficha de Google <span>· Castellón</span></a>
+    <a class="btn primary small" id="hdrcta" href="#" hidden>Hablemos</a>
+  </div>
+</header>
+
 <main>
-  <h1>¿Te está haciendo perder clientes tu ficha de Google?</h1>
-  <p class="sub">Test de 2 minutos para negocios de Castellón. Abre Google Maps, busca tu negocio y marca lo que ya cumples.</p>
-
-  <ol id="checks"></ol>
-
-  <section class="result" aria-live="polite">
-    <div class="score"><span id="score">0</span><small> / 10</small></div>
-    <p class="msg" id="msg"></p>
-  </section>
-
-  <section class="cta">
-    <h2>Siguiente paso: 15 minutos, gratis</h2>
-    <p>Te enseño qué arreglaría primero en tu ficha, con tu resultado delante.</p>
-    <div class="btns">
-      <a class="btn primary hidden" id="book" href="#">Reservar mis 15 minutos</a>
-      <a class="btn secondary hidden" id="wa" href="#">Escribirme por WhatsApp</a>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Para negocios de Castellón</p>
+      <h1>Que tus clientes te encuentren y te contacten desde Google.</h1>
+      <p class="lead">Arreglo la ficha de Google de tu negocio en 48 horas: horarios, reseñas, contacto por WhatsApp y reservas. Precio cerrado y sin permanencia.</p>
+      <div class="btns">
+        <a class="btn primary" href="#test">Hacer el test de 2 minutos</a>
+        <a class="btn ghost" href="#precios">Ver precios</a>
+      </div>
+      <ul class="facts">
+        <li>Hecho en 48 horas</li>
+        <li>Sin permanencia</li>
+        <li>Nunca necesito tu contraseña</li>
+      </ul>
     </div>
-    <p class="pilot">Si prefieres que lo arregle directamente: prueba piloto de 99 €, lista en 48 horas y sin permanencia.</p>
   </section>
 
-  <p class="foot">Todo se calcula en tu móvil; esta página no guarda ni envía nada. Hecho en Castellón por <span id="who"></span>.</p>
+  <section id="fugas">
+    <div class="wrap">
+      <h2>Tres fugas que veo una y otra vez</h2>
+      <p class="muted" style="max-width:40em">Muchos clientes miran tu ficha de Google antes de llamarte o de venir. Si algo falla ahí, lo notas en el negocio y no sabes por qué.</p>
+      <div class="grid3" style="margin-top:24px">
+        <div class="card"><h3>Horario incorrecto</h3><p>Festivos sin poner o horarios antiguos. El cliente llega y está cerrado, o no viene porque cree que lo está.</p></div>
+        <div class="card"><h3>Reseñas sin responder</h3><p>Una respuesta amable y cuidada a una reseña dice mucho de un negocio a quien la lee, incluso si la reseña es mala.</p></div>
+        <div class="card"><h3>Sin forma fácil de contactar</h3><p>Si reservar o escribir por WhatsApp cuesta más de un toque, una parte de los clientes se rinde.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precios" style="padding-top:8px">
+    <div class="wrap">
+      <h2>Qué hago y cuánto cuesta</h2>
+      <p class="muted">Precios en euros, claros desde el principio.</p>
+      <div class="grid3" style="margin-top:24px">
+        <div class="card">
+          <span class="tag">Para empezar</span>
+          <h3>Prueba piloto</h3>
+          <div class="price">99 € <small>una vez</small></div>
+          <ul>
+            <li>Limpio y completo tu ficha: horarios, categorías, descripción</li>
+            <li>Enlace de contacto o reserva</li>
+            <li>Lista de fotos que conviene subir</li>
+            <li>5 respuestas a reseñas redactadas</li>
+          </ul>
+        </div>
+        <div class="card feat">
+          <span class="tag">Más completo</span>
+          <h3>Plan mensual</h3>
+          <div class="price">199 € <small>de alta + 35 €/mes</small></div>
+          <ul>
+            <li>Todo lo de la prueba piloto</li>
+            <li>WhatsApp Business: saludo, mensaje de ausencia y respuestas rápidas</li>
+            <li>Respuesta a tus reseñas cada mes</li>
+            <li>2 publicaciones al mes en tu ficha</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Hostelería</span>
+          <h3>Plan mensual + carta</h3>
+          <div class="price">A medida <small>según tu carta</small></div>
+          <ul>
+            <li>Todo lo del plan mensual</li>
+            <li>Carta revisada o creada en español, inglés y alemán</li>
+            <li>Textos claros y sin errores</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">No incluyo publicidad, páginas web ni gestión completa de redes sociales. Y no prometo posiciones ni un número de clientes nuevos: arreglo lo que depende de tu ficha.</p>
+    </div>
+  </section>
+
+  <section id="como" style="padding-top:8px">
+    <div class="wrap">
+      <h2>Cómo funciona</h2>
+      <ol class="steps" style="margin-top:22px">
+        <li><h3>Hablamos 15 minutos</h3><p>Gratis. Reviso tu ficha contigo y te enseño qué arreglaría primero.</p></li>
+        <li><h3>Me das acceso, sin contraseña</h3><p>Me añades como gestor de tu ficha desde tu correo. Tú sigues siendo el propietario.</p></li>
+        <li><h3>Listo en 48 horas</h3><p>Te envío capturas de antes y después, y tú decides si quieres que lo mantenga cada mes.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="test">
+    <div class="wrap">
+      <div class="test-box">
+        <h2>Test de 2 minutos: ¿te está haciendo perder clientes tu ficha?</h2>
+        <p class="muted">Abre Google Maps, busca tu negocio y marca lo que ya cumples.</p>
+        <ol class="checks" id="checks"></ol>
+        <div class="result" aria-live="polite">
+          <div class="score"><span id="score">0</span><small> / 10</small></div>
+          <p class="msg" id="msg"></p>
+          <div class="btns">
+            <a class="btn primary" data-cta="book" href="#">Reservar mis 15 minutos gratis</a>
+            <a class="btn ghost" data-cta="wa" href="#">Escribirme por WhatsApp</a>
+          </div>
+        </div>
+        <p class="note">Todo se calcula en tu móvil; esta página no guarda ni envía nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Preguntas frecuentes</h2>
+      <div style="margin-top:20px;max-width:720px">
+        <details><summary>¿Necesitas mi contraseña de Google?</summary><p>No. Me añades como gestor desde la configuración de tu ficha, con tu correo. Puedes quitarme cuando quieras.</p></details>
+        <details><summary>¿Hay permanencia?</summary><p>No. La prueba piloto es un pago único. El plan mensual lo puedes dejar cuando quieras.</p></details>
+        <details><summary>¿Me aseguras más clientes?</summary><p>No, y desconfía de quien lo haga. Me ocupo de que lo que ven tus clientes sea correcto y de que contactarte sea fácil.</p></details>
+        <details><summary>¿Y si tengo reseñas malas?</summary><p>Las respondo con un tono profesional y amable. No compro ni invento reseñas, y no puedo borrar las reales.</p></details>
+        <details><summary>¿Haces páginas web?</summary><p>De momento no. Me centro en la ficha de Google, el contacto por WhatsApp y las cartas de hostelería.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap about">
+      <h2>Quién está detrás</h2>
+      <p>Soy Sherbaz y vivo en Castellón. Hablo español, inglés y alemán, y trabajo con negocios pequeños de aquí. Si me escribes, hablas conmigo directamente.</p>
+    </div>
+  </section>
+
+  <section id="contacto" style="padding-top:8px">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Empieza con 15 minutos gratis</h2>
+        <p>Te enseño qué arreglaría primero en tu ficha, sin compromiso.</p>
+        <div class="btns">
+          <a class="btn primary" data-cta="book" href="#">Reservar 15 minutos</a>
+          <a class="btn ghost" data-cta="wa" href="#">Escribir por WhatsApp</a>
+        </div>
+        <p class="soon" id="soon" hidden>Contacto disponible muy pronto.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
+<footer>
+  <div class="wrap">Hecho en Castellón por <span id="who"></span>.</div>
+</footer>
+
 <script>
-/* ---- Rellenar antes de publicar ---- */
+/* ---- Rellenar antes de compartir la web ---- */
 const CONFIG = {
   name: "Sherbaz",
   whatsapp: "",   // solo dígitos con prefijo de país, p. ej. 34600000000
   bookingUrl: ""  // enlace a tu agenda de 15 minutos
 };
-/* ------------------------------------ */
+/* ------------------------------------------- */
 
+document.getElementById("who").textContent = CONFIG.name;
+
+function waLink(text){
+  return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
+}
+
+function applyCTAs(score){
+  const generic = "Hola " + CONFIG.name + ", he visto tu web y me gustaría la revisión gratuita de 15 minutos.";
+  const withScore = "Hola " + CONFIG.name + ", he hecho el test de la ficha de Google y he sacado " + score +
+    "/10. Me gustaría la revisión gratuita de 15 minutos.";
+  document.querySelectorAll('[data-cta="book"]').forEach(a => {
+    if (CONFIG.bookingUrl){ a.href = CONFIG.bookingUrl; a.classList.add("on"); }
+  });
+  document.querySelectorAll('[data-cta="wa"]').forEach(a => {
+    if (CONFIG.whatsapp){
+      const inTest = a.closest(".result");
+      a.href = waLink(inTest && score !== null ? withScore : generic);
+      a.classList.add("on");
+    }
+  });
+  document.getElementById("soon").hidden = !!(CONFIG.bookingUrl || CONFIG.whatsapp);
+
+  const hdr = document.getElementById("hdrcta");
+  if (CONFIG.bookingUrl){ hdr.href = CONFIG.bookingUrl; hdr.textContent = "Reservar 15 min"; hdr.hidden = false; }
+  else if (CONFIG.whatsapp){ hdr.href = waLink(generic); hdr.textContent = "WhatsApp"; hdr.hidden = false; }
+}
+
+/* ---- Test ---- */
 const CHECKS = [
   "Tu ficha aparece como tuya (sin el enlace «¿Eres el propietario?»)",
   "La categoría principal es la correcta",
@@ -91,20 +316,17 @@ const CHECKS = [
   "Tu carta o tus servicios aparecen en la ficha",
   "Has publicado algo en los últimos 60 días"
 ];
-
 const list = document.getElementById("checks");
-CHECKS.forEach((text, i) => {
+CHECKS.forEach(text => {
   const li = document.createElement("li");
-  li.innerHTML = '<label><input type="checkbox" data-i="' + i + '"><span class="t"></span></label>';
+  li.innerHTML = '<label><input type="checkbox"><span class="t"></span></label>';
   li.querySelector(".t").textContent = text;
   list.appendChild(li);
 });
 
 const scoreEl = document.getElementById("score");
 const msgEl = document.getElementById("msg");
-const book = document.getElementById("book");
-const wa = document.getElementById("wa");
-document.getElementById("who").textContent = CONFIG.name;
+let touched = false;
 
 function messageFor(n){
   if (n <= 4) return "Es probable que haya clientes que no te encuentran o no te contactan. Hay mucho margen de mejora y casi todo se arregla rápido.";
@@ -116,20 +338,8 @@ function update(){
   const n = document.querySelectorAll("#checks input:checked").length;
   scoreEl.textContent = n;
   msgEl.textContent = touched ? messageFor(n) : "Marca lo que ya cumples para ver tu resultado.";
-
-  if (CONFIG.bookingUrl){
-    book.href = CONFIG.bookingUrl;
-    book.classList.remove("hidden");
-  }
-  if (CONFIG.whatsapp){
-    const text = "Hola " + CONFIG.name + ", he hecho el test de la ficha de Google y he sacado " + n +
-      "/10. Me gustaría la revisión gratuita de 15 minutos.";
-    wa.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
-    wa.classList.remove("hidden");
-  }
+  applyCTAs(touched ? n : null);
 }
-
-let touched = false;
 list.addEventListener("change", () => { touched = true; update(); });
 update();
 </script>
