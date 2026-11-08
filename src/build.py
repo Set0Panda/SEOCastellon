@@ -388,12 +388,19 @@ TEMPLATE = Template("""<!DOCTYPE html>
 <title>$title</title>
 <meta name="description" content="$desc">
 <link rel="canonical" href="$canonical">
+<link rel="icon" href="$icon_href" type="image/svg+xml">
+<link rel="apple-touch-icon" href="$apple_href">
 $alternates
 <meta property="og:title" content="$og_title">
 <meta property="og:description" content="$og_desc">
 <meta property="og:type" content="website">
 <meta property="og:url" content="$canonical">
 <meta property="og:locale" content="$og_locale">
+<meta property="og:image" content="$og_image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="$og_alt">
+<meta name="twitter:card" content="summary_large_image">
 <style>$css</style>
 </head>
 <body>
@@ -621,6 +628,8 @@ def render(code, htmllang, folder, _short, _full, og_locale):
     return TEMPLATE.substitute(
         htmllang=htmllang, canonical=page_url(folder), alternates="\n".join(alts),
         og_locale=og_locale, css=CSS, switcher="".join(sw), facts=facts, leaks=leaks,
+        icon_href=prefix + "favicon.svg", apple_href=prefix + "apple-touch-icon.png",
+        og_image=BASE + "og-" + code + ".png", og_alt=esc(s["og_title"]),
         tiers="".join(tiers), steps=steps, faq=faq, strings_json=strings_json, **simple)
 
 
