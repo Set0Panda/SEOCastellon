@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test de 2 minutos: ¿tu ficha de Google te hace perder clientes?</title>
+<meta name="description" content="Test gratuito de 2 minutos para negocios de Castellón. Descubre qué le falta a tu ficha de Google y reserva una revisión gratuita de 15 minutos.">
+<style>
+  :root{
+    --bg:#faf8f4; --card:#ffffff; --ink:#1d2330; --muted:#5b6475;
+    --line:#e3dfd6; --accent:#c2410c; --accent-dark:#9a3412; --ok:#166534;
+    --warn:#a16207; --bad:#b91c1c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:640px;margin:0 auto;padding:28px 18px 64px}
+  h1{font-size:1.65rem;line-height:1.2;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 24px}
+  ol{list-style:none;padding:0;margin:0 0 24px;counter-reset:q}
+  li{counter-increment:q}
+  label{display:flex;gap:12px;align-items:flex-start;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:13px 14px;margin-bottom:10px;
+    cursor:pointer}
+  label:hover{border-color:#c9c3b6}
+  label span.t::before{content:counter(q) ". ";color:var(--muted)}
+  input[type=checkbox]{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--accent)}
+  label:has(input:checked){border-color:var(--ok);background:#f2f9f4}
+  .result{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px;margin-bottom:20px}
+  .score{font-size:2.4rem;font-weight:700;line-height:1}
+  .score small{font-size:1rem;font-weight:500;color:var(--muted)}
+  .msg{margin:10px 0 0}
+  .cta h2{font-size:1.25rem;margin:0 0 6px}
+  .cta p{margin:0 0 14px;color:var(--muted)}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  a.btn{display:inline-block;text-decoration:none;font-weight:600;border-radius:10px;
+    padding:13px 18px}
+  a.primary{background:var(--accent);color:#fff}
+  a.primary:hover{background:var(--accent-dark)}
+  a.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  a.hidden{display:none}
+  .pilot{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:.95rem}
+  .foot{margin-top:28px;font-size:.85rem;color:var(--muted)}
+  :focus-visible{outline:3px solid #1d4ed8;outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+  <h1>¿Te está haciendo perder clientes tu ficha de Google?</h1>
+  <p class="sub">Test de 2 minutos para negocios de Castellón. Abre Google Maps, busca tu negocio y marca lo que ya cumples.</p>
+
+  <ol id="checks"></ol>
+
+  <section class="result" aria-live="polite">
+    <div class="score"><span id="score">0</span><small> / 10</small></div>
+    <p class="msg" id="msg"></p>
+  </section>
+
+  <section class="cta">
+    <h2>Siguiente paso: 15 minutos, gratis</h2>
+    <p>Te enseño qué arreglaría primero en tu ficha, con tu resultado delante.</p>
+    <div class="btns">
+      <a class="btn primary hidden" id="book" href="#">Reservar mis 15 minutos</a>
+      <a class="btn secondary hidden" id="wa" href="#">Escribirme por WhatsApp</a>
+    </div>
+    <p class="pilot">Si prefieres que lo arregle directamente: prueba piloto de 99 €, lista en 48 horas y sin permanencia.</p>
+  </section>
+
+  <p class="foot">Todo se calcula en tu móvil; esta página no guarda ni envía nada. Hecho en Castellón por <span id="who"></span>.</p>
+</main>
+
+<script>
+/* ---- Rellenar antes de publicar ---- */
+const CONFIG = {
+  name: "Sherbaz",
+  whatsapp: "",   // solo dígitos con prefijo de país, p. ej. 34600000000
+  bookingUrl: ""  // enlace a tu agenda de 15 minutos
+};
+/* ------------------------------------ */
+
+const CHECKS = [
+  "Tu ficha aparece como tuya (sin el enlace «¿Eres el propietario?»)",
+  "La categoría principal es la correcta",
+  "El horario está completo, incluidos los festivos",
+  "Un cliente puede llamarte, escribirte por WhatsApp o reservar desde la ficha",
+  "Tienes web o un enlace de reserva",
+  "Hay una descripción clara de tu negocio",
+  "Tienes 10 fotos o más, alguna de los últimos 6 meses",
+  "Has respondido a 8 de tus últimas 10 reseñas",
+  "Tu carta o tus servicios aparecen en la ficha",
+  "Has publicado algo en los últimos 60 días"
+];
+
+const list = document.getElementById("checks");
+CHECKS.forEach((text, i) => {
+  const li = document.createElement("li");
+  li.innerHTML = '<label><input type="checkbox" data-i="' + i + '"><span class="t"></span></label>';
+  li.querySelector(".t").textContent = text;
+  list.appendChild(li);
+});
+
+const scoreEl = document.getElementById("score");
+const msgEl = document.getElementById("msg");
+const book = document.getElementById("book");
+const wa = document.getElementById("wa");
+document.getElementById("who").textContent = CONFIG.name;
+
+function messageFor(n){
+  if (n <= 4) return "Es probable que haya clientes que no te encuentran o no te contactan. Hay mucho margen de mejora y casi todo se arregla rápido.";
+  if (n <= 7) return "Tienes una buena base y fugas fáciles de arreglar.";
+  return "Vas bien. Te ayudo a mantenerlo al día.";
+}
+
+function update(){
+  const n = document.querySelectorAll("#checks input:checked").length;
+  scoreEl.textContent = n;
+  msgEl.textContent = messageFor(n);
+
+  if (CONFIG.bookingUrl){
+    book.href = CONFIG.bookingUrl;
+    book.classList.remove("hidden");
+  }
+  if (CONFIG.whatsapp){
+    const text = "Hola " + CONFIG.name + ", he hecho el test de la ficha de Google y he sacado " + n +
+      "/10. Me gustaría la revisión gratuita de 15 minutos.";
+    wa.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
+    wa.classList.remove("hidden");
+  }
+}
+
+list.addEventListener("change", update);
+update();
+</script>
+</body>
+</html>
