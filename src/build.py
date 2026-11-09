@@ -56,8 +56,6 @@ STRINGS = {
              "items": ["Limpio y completo tu ficha: horarios, categorías, descripción", "Enlace de contacto o reserva", "Lista de fotos que conviene subir", "5 respuestas a reseñas redactadas"]},
             {"tag": "Más completo", "name": "Plan mensual", "price": "199 €", "small": "de alta + 35 €/mes", "feat": True,
              "items": ["Todo lo de la prueba piloto", "WhatsApp Business: saludo, mensaje de ausencia y respuestas rápidas", "Respuesta a tus reseñas cada mes", "2 publicaciones al mes en tu ficha"]},
-            {"tag": "Hostelería", "name": "Plan mensual + carta", "price": "A medida", "small": "según tu carta", "feat": False,
-             "items": ["Todo lo del plan mensual", "Carta revisada o creada en español, inglés y alemán", "Textos claros y sin errores"]},
         ],
         "prices_note": "No hago publicidad, páginas web ni gestión completa de redes sociales. Y no prometo posiciones ni un número de clientes nuevos: arreglo lo que depende de tu ficha.",
         "how_h2": "Cómo funciona",
@@ -93,7 +91,7 @@ STRINGS = {
             ("¿Hay permanencia?", "No. La prueba piloto es un pago único. El plan mensual lo puedes dejar cuando quieras."),
             ("¿Me aseguras más clientes?", "No, y desconfía de quien lo haga. Me ocupo de que lo que ven tus clientes sea correcto y de que contactarte sea fácil."),
             ("¿Y si tengo reseñas malas?", "Las respondo con un tono profesional y amable. No compro ni invento reseñas, y no puedo borrar las reales."),
-            ("¿Haces páginas web?", "De momento no. Me centro en la ficha de Google, el contacto por WhatsApp y las cartas de hostelería."),
+            ("¿Haces páginas web?", "De momento no. Me centro en la ficha de Google y el contacto por WhatsApp."),
             ("¿Usas inteligencia artificial?", "Sí, para redactar borradores más rápido: textos, respuestas a reseñas y traducciones. Lo reviso todo yo antes de publicarlo y lo adapto a tu negocio."),
         ],
         "about_h2": "Quién está detrás",
@@ -139,8 +137,6 @@ STRINGS = {
              "items": ["Netege i complete la teua fitxa: horaris, categories, descripció", "Enllaç de contacte o de reserva", "Llista de fotos que convé pujar", "5 respostes a ressenyes redactades"]},
             {"tag": "Més complet", "name": "Pla mensual", "price": "199 €", "small": "d'alta + 35 €/mes", "feat": True,
              "items": ["Tot el de la prova pilot", "WhatsApp Business: salutació, missatge d'absència i respostes ràpides", "Resposta a les teues ressenyes cada mes", "2 publicacions al mes a la teua fitxa"]},
-            {"tag": "Hostaleria", "name": "Pla mensual + carta", "price": "A mesura", "small": "segons la teua carta", "feat": False,
-             "items": ["Tot el del pla mensual", "Carta revisada o creada en castellà, anglés i alemany", "Textos clars i sense errors"]},
         ],
         "prices_note": "No faig publicitat, pàgines web ni gestió completa de xarxes socials. I no promet posicions ni un nombre de clients nous: arregle el que depén de la teua fitxa.",
         "how_h2": "Com funciona",
@@ -222,8 +218,6 @@ STRINGS = {
              "items": ["I clean up and complete your profile: hours, categories, description", "A contact or booking link", "A list of photos worth uploading", "5 review replies written for you"]},
             {"tag": "More complete", "name": "Monthly plan", "price": "€199", "small": "set-up + €35/month", "feat": True,
              "items": ["Everything in the pilot", "WhatsApp Business: greeting, away message and quick replies", "Replies to your reviews every month", "2 posts a month on your profile"]},
-            {"tag": "Hospitality", "name": "Monthly plan + menu", "price": "Quoted", "small": "depending on your menu", "feat": False,
-             "items": ["Everything in the monthly plan", "Menu proofread or created in Spanish, English and German", "Clear, error-free text"]},
         ],
         "prices_note": "I don't do advertising, websites or full social media management. And I don't promise rankings or a number of new customers: I fix what's within your profile's control.",
         "how_h2": "How it works",
@@ -259,7 +253,7 @@ STRINGS = {
             ("Is there a contract?", "No. The pilot is a one-off payment. You can stop the monthly plan whenever you like."),
             ("Do you guarantee more customers?", "No, and be wary of anyone who does. I make sure what your customers see is correct and that getting in touch is easy."),
             ("What about bad reviews?", "I reply in a professional, friendly tone. I don't buy or invent reviews, and I can't delete genuine ones."),
-            ("Do you build websites?", "Not for now. I focus on the Google profile, WhatsApp contact and hospitality menus."),
+            ("Do you build websites?", "Not for now. I focus on the Google profile and WhatsApp contact."),
             ("Do you use artificial intelligence?", "Yes, to draft faster: texts, review replies and translations. I check everything myself before it goes live and adapt it to your business."),
         ],
         "about_h2": "Who's behind this",
@@ -322,6 +316,7 @@ CSS = """
   .facts li::before{content:"✓ ";color:var(--ok);font-weight:700}
 
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tiers2{grid-template-columns:repeat(2,1fr);max-width:780px;margin-left:auto;margin-right:auto}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
   .card h3{margin-bottom:8px}
   .card p{margin:0;color:var(--muted);font-size:.98rem}
@@ -441,7 +436,7 @@ $alternates
     <div class="wrap">
       <h2>$prices_h2</h2>
       <p class="muted">$prices_p</p>
-      <div class="grid3" style="margin-top:24px">$tiers</div>
+      <div class="grid3 tiers2" style="margin-top:24px">$tiers</div>
       <p class="note">$prices_note</p>
     </div>
   </section>
