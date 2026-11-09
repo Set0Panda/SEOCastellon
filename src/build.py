@@ -20,7 +20,6 @@ BASE = "https://set0panda.github.io/SEOCastellon/"  # change if a custom domain 
 # code, html lang, folder, label shown in switcher, full name, og:locale
 LANGS = [
     ("es", "es", "", "ES", "Castellano", "es_ES"),
-    ("va", "ca-valencia", "va/", "VAL", "Valencià", "ca_ES"),
     ("en", "en", "en/", "EN", "English", "en_GB"),
 ]
 

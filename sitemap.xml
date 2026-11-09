@@ -3,19 +3,11 @@
   <url>
     <loc>https://set0panda.github.io/SEOCastellon/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://set0panda.github.io/SEOCastellon/"/>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://set0panda.github.io/SEOCastellon/va/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://set0panda.github.io/SEOCastellon/en/"/>
-  </url>
-  <url>
-    <loc>https://set0panda.github.io/SEOCastellon/va/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://set0panda.github.io/SEOCastellon/"/>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://set0panda.github.io/SEOCastellon/va/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://set0panda.github.io/SEOCastellon/en/"/>
   </url>
   <url>
     <loc>https://set0panda.github.io/SEOCastellon/en/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://set0panda.github.io/SEOCastellon/"/>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://set0panda.github.io/SEOCastellon/va/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://set0panda.github.io/SEOCastellon/en/"/>
   </url>
 </urlset>
